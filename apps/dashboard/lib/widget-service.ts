@@ -240,7 +240,7 @@ export async function updateTenantWidgetSettings(
       name: input.name,
       isActive: input.isActive,
       domainAllowlist: input.domainAllowlist,
-      themeJson: input.theme as Record<string, unknown>,
+      themeJson: JSON.parse(JSON.stringify(input.theme)) as unknown,
     },
   });
 
