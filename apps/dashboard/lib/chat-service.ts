@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { prisma } from "@chacho/db";
 import type { SessionUser } from "@/lib/auth";
+import type { DevStoreMessage } from "@/lib/dev-store";
 import { readDevStore, writeDevStore } from "@/lib/dev-store";
 import { getMockWidgetByKey } from "@/lib/mock-widget";
 
@@ -390,7 +391,7 @@ export async function getConversationDetail(tenantId: string, conversationId: st
     visitorName: visitor?.name ?? null,
     visitorEmail: visitor?.email ?? null,
     lastMessagePreview: messages.at(-1)?.body ?? null,
-    messages: messages.map((message) => ({
+    messages: messages.map((message: DevStoreMessage) => ({
       id: message.id,
       senderType: message.senderType,
       body: message.body,
@@ -406,7 +407,7 @@ export async function listConversationMessages(conversationId: string) {
       orderBy: { createdAt: "asc" },
     });
 
-    return messages.map((message) => ({
+    return messages.map((message: (typeof messages)[number]) => ({
       id: message.id,
       senderType: message.senderType,
       body: message.body,
@@ -418,7 +419,7 @@ export async function listConversationMessages(conversationId: string) {
   return store.messages
     .filter((message) => message.conversationId === conversationId)
     .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-    .map((message) => ({
+    .map((message: DevStoreMessage) => ({
       id: message.id,
       senderType: message.senderType,
       body: message.body,
