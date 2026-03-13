@@ -359,7 +359,7 @@ export async function getConversationDetail(tenantId: string, conversationId: st
       visitorName: conversation.visitor.name,
       visitorEmail: conversation.visitor.email,
       lastMessagePreview: conversation.messages.at(-1)?.body ?? null,
-      messages: conversation.messages.map((message) => ({
+      messages: conversation.messages.map((message: (typeof conversation.messages)[number]) => ({
         id: message.id,
         senderType: message.senderType,
         body: message.body,
