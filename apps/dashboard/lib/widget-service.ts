@@ -1,6 +1,5 @@
 import { prisma } from "@chacho/db";
 import type { WidgetTheme } from "@chacho/types/chat";
-import type { Prisma } from "@prisma/client";
 import { getMockWidgetByKey } from "@/lib/mock-widget";
 
 function isDatabaseConfigured() {
@@ -241,7 +240,7 @@ export async function updateTenantWidgetSettings(
       name: input.name,
       isActive: input.isActive,
       domainAllowlist: input.domainAllowlist,
-      themeJson: input.theme as unknown as Prisma.InputJsonValue,
+      themeJson: input.theme as Record<string, unknown>,
     },
   });
 
