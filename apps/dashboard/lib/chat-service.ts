@@ -1,6 +1,5 @@
 import { randomUUID } from "node:crypto";
 import { prisma } from "@chacho/db";
-import type { Prisma } from "@prisma/client";
 import type { SessionUser } from "@/lib/auth";
 import { readDevStore, writeDevStore } from "@/lib/dev-store";
 import { getMockWidgetByKey } from "@/lib/mock-widget";
@@ -13,7 +12,9 @@ function isoNow() {
   return new Date().toISOString();
 }
 
-function isJsonObject(value: Prisma.JsonValue): value is Prisma.JsonObject {
+type JsonObjectLike = Record<string, unknown>;
+
+function isJsonObject(value: unknown): value is JsonObjectLike {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
