@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run db:generate --workspace @chacho/db && next build",
     "start": "next start",
     "lint": "next lint"
   },
