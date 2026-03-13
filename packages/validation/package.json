@@ -1,0 +1,12 @@
+{
+  "name": "@chacho/validation",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./widget": "./src/widget.ts"
+  },
+  "dependencies": {
+    "zod": "3.24.2"
+  }
+}

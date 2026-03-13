@@ -1,0 +1,9 @@
+{
+  "name": "@chacho/types",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./chat": "./src/chat.ts"
+  }
+}
