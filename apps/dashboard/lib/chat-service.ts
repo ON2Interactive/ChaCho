@@ -291,7 +291,7 @@ export async function listTenantConversations(tenantId: string): Promise<Convers
       },
     });
 
-    return conversations.map((conversation) => ({
+    return conversations.map((conversation: (typeof conversations)[number]) => ({
       id: conversation.id,
       status: conversation.status,
       sourceUrl: conversation.sourceUrl,
